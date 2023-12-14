@@ -1,0 +1,57 @@
+app:
+  name: VCM Admin
+  logoutTip: Reminder
+  logoutMessage: Confirm to exit the system?
+  menuLoading: Menu loading...
+  searchNotData: No search results yet
+  toSearch: to search
+  toNavigate: to navigate
+header:
+  tooltipEntryFull: Full Screen
+  tooltipExitFull: Exit Full Screen
+  tooltipNotify: Notification
+  dropdownItemLoginOut: Login Out
+  userInfo: User info
+  search: Search
+login:
+  loginSuccessTitle: Login successful
+  loginSuccessDesc: Welcome back
+components:
+  form:
+    putAway: putAway
+    unfold: unfold
+    resetText: reset
+    queryText: query
+    inputText: input
+    chooseText: choose
+    maxTip: 'The number of characters should be less than {0}'
+    iconPlaceholder: Click the select icon
+  table:
+    index: index
+    settingDens: Density
+    settingDensDefault: Default
+    settingDensMiddle: Middle
+    settingDensSmall: Compact
+  modal:
+    positiveText: positive
+    negativeText: negative
+  cropper:
+    selectImage: Select Image
+    uploadSuccess: Uploaded success!
+    modalTitle: Avatar upload
+    okText: Confirm and upload
+    btn_reset: Reset
+    btn_rotate_left: Counterclockwise rotation
+    btn_rotate_right: Clockwise rotation
+    btn_scale_x: Flip horizontal
+    btn_scale_y: Flip vertical
+    btn_zoom_in: Zoom in
+    btn_zoom_out: Zoom out
+    preview: Preivew
+router:
+  dict: dict
+  factory: factory
+  project: project
+  valve: valve
+  charts: charts
+  chat: chat

@@ -1,0 +1,59 @@
+app:
+  name: VCM Admin
+  logoutTip: 温馨提醒
+  logoutMessage: 是否确认退出系统?
+  menuLoading: 菜单加载中...
+  searchNotData: 暂无搜索结果
+  toSearch: 确认
+  toNavigate: 切换
+header:
+  tooltipEntryFull: 全屏
+  tooltipExitFull: 退出全屏
+  tooltipNotify: 消息通知
+  dropdownItemLoginOut: 退出系统
+  userInfo: 个人中心
+  search: 搜索
+login:
+  loginSuccessTitle: 登录成功
+  loginSuccessDesc: 欢迎回来
+components:
+  form:
+    putAway: 收起
+    unfold: 展开
+    resetText: 重置
+    queryText: 查询
+    inputText: 请输入
+    chooseText: 请选择
+    startTime: 开始时间
+    endTime: 结束时间
+    maxTip: '字符数应小于{0}位'
+    iconPlaceholder: 点击选择图标
+  table:
+    index: 序号
+    settingDens: 密度
+    settingDensDefault: 默认
+    settingDensMiddle: 中等
+    settingDensSmall: 紧凑
+  modal:
+    positiveText: 确定
+    negativeText: 取消
+  cropper:
+    selectImage: 选择图片
+    uploadSuccess: 上传成功
+    modalTitle: 头像上传
+    okText: 确认并上传
+    btn_reset: 重置
+    btn_rotate_left: 逆时针旋转
+    btn_rotate_right: 顺时针旋转
+    btn_scale_x: 水平翻转
+    btn_scale_y: 垂直翻转
+    btn_zoom_in: 放大
+    btn_zoom_out: 缩小
+    preview: 预览
+router:
+  dict: 字典管理
+  factory: 工厂管理
+  project: 项目管理
+  valve: 阀门管理
+  charts: 数据可视化
+  chat: 分析
