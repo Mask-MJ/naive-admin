@@ -1,19 +1,15 @@
-import type { RouteLocationNormalized, Router } from 'vue-router/auto';
+import type { Router } from 'vue-router/auto';
 import { PageEnum } from '@/settings';
 
 function createPageGuard(router: Router) {
   const controller = new AbortController();
-  const body = document.body;
-  const isHash = (href: string) => href.startsWith('#');
 
   router.beforeEach(async () => {
     window.$loadingBar?.start();
     controller.abort();
     return true;
   });
-  router.afterEach((to) => {
-    // scroll top
-    isHash((to as RouteLocationNormalized & { href: string })?.href) && body.scrollTo(0, 0);
+  router.afterEach(() => {
     window.$loadingBar?.finish();
   });
 }
@@ -43,7 +39,7 @@ function createPermissionGuard(router: Router) {
         path: PageEnum.BASE_LOGIN,
         replace: true,
       };
-      // if (to.path) redirectData.query = { ...redirectData.query, redirect: to.path };
+      if (to.path) redirectData.query = { ...redirectData.query, redirect: to.path };
 
       next(redirectData);
       return;

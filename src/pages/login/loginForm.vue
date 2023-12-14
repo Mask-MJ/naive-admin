@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import type { FormInst, FormRules } from 'naive-ui';
+  import { register } from '@/api/user';
 
   const { login } = useUserStore();
 
@@ -20,6 +21,16 @@
     loading.value = true;
     await formRef.value?.validate();
     login(model.value);
+    loading.value = false;
+  }
+
+  async function handleRegister() {
+    loading.value = true;
+    await formRef.value?.validate();
+    try {
+      await register(model.value);
+      window.$message.success('注册成功');
+    } catch (error) {}
     loading.value = false;
   }
 </script>
@@ -50,6 +61,9 @@
         @click="handleSubmit"
       >
         确定
+      </n-button>
+      <n-button size="large" :block="true" :round="true" :loading="loading" @click="handleRegister">
+        注册
       </n-button>
     </n-space>
   </n-form>
