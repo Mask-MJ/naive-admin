@@ -16,6 +16,7 @@ function createPageGuard(router: Router) {
 
 function createPermissionGuard(router: Router) {
   const userStore = useUserStore();
+  const routerStore = useRouterStore();
 
   router.beforeEach(async (to, from, next) => {
     const token = userStore.getToken;
@@ -62,14 +63,17 @@ function createPermissionGuard(router: Router) {
     }
 
     // 判断是否存有用户信息
-    if (userStore.userInfo) {
-      try {
-        await userStore.getUserInfoAction();
-      } catch (err) {
-        next();
-        return;
-      }
+    if (Object.keys(userStore.getUserInfo).length === 0) {
+      await userStore.getUserInfoAction();
     }
+
+    // 判断是否已经异步添加路由
+    if (routerStore.isDynamicAddedRoute) {
+      next();
+      return;
+    }
+    // 异步添加路由
+    await routerStore.buildRoutesAction();
     next();
   });
 }

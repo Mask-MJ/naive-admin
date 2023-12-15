@@ -1,26 +1,15 @@
-<script setup lang="ts" name="DarkModeSwitch">
-  import { computed } from 'vue';
-
-  interface Props {
-    /** 暗黑模式 */
-    dark?: boolean;
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    dark: false,
+<script setup lang="ts">
+  const props = defineProps({
+    dark: { type: Boolean, default: false },
   });
 
-  const emit = defineEmits<Emits>();
+  const emit = defineEmits(['update:dark']);
 
-  interface Emits {
-    (e: 'update:dark', darkMode: boolean): void;
-  }
-
-  const darkMode = computed({
+  const darkMode = computed<boolean>({
     get() {
       return props.dark;
     },
-    set(newValue: boolean) {
+    set(newValue) {
       emit('update:dark', newValue);
     },
   });

@@ -19,8 +19,8 @@ export interface RequestOptions {
 
 // 请求响应参数（不包含data）
 export interface BasicResult {
-  code: number;
-  msg: string;
+  statusCode: number;
+  message: string;
 }
 
 // 请求响应参数（包含data）

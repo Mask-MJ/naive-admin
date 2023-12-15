@@ -1,19 +1,17 @@
 import { defineStore } from 'pinia';
 import type { RemovableRef } from '@vueuse/core';
 import { router } from '@/router';
-import { TOKEN_KEY, USER_INFO_KEY } from '@/settings';
+import { PageEnum, TOKEN_KEY, USER_INFO_KEY } from '@/settings';
 import { doLogout, getUserInfo, login, LoginParams, UserInfo } from '@/api/user';
 
 interface UserState {
-  userInfo: RemovableRef<UserInfo | null>;
+  userInfo: RemovableRef<UserInfo>;
   token: RemovableRef<string | null>;
 }
 
 export const useUserStore = defineStore('user-store', {
   state: (): UserState => ({
-    // user info
-    userInfo: useStorage(USER_INFO_KEY, null),
-    // token
+    userInfo: useStorage(USER_INFO_KEY, {} as UserInfo),
     token: useStorage(TOKEN_KEY, null),
   }),
   getters: {
@@ -28,27 +26,28 @@ export const useUserStore = defineStore('user-store', {
     setToken(info: string | null = null) {
       this.token = info;
     },
-    setUserInfo(info: UserInfo | null = null) {
-      this.userInfo = info;
+    setUserInfo(info?: UserInfo) {
+      this.userInfo = info || ({} as UserInfo);
     },
-    // 登录, 获取token
-    async login(params: LoginParams): Promise<UserInfo | null> {
+    async login(params: LoginParams) {
       try {
-        const data = await login(params);
-        const { accessToken } = data;
+        const { accessToken } = await login(params);
         this.setToken(accessToken);
-        return this.afterLoginAction();
+
+        await this.afterLoginAction();
+        // 判断是否有重定向地址
+        // 如果有, 则跳转到重定向地址, 否则跳转到首页
+        const redirect = router.currentRoute.value.query.redirect;
+        router.push(redirect ? (redirect as string) : PageEnum.BASE_HOME);
       } catch (error) {
         return Promise.reject(error);
       }
     },
-    // 登录后的操作, 获取用户信息
     async afterLoginAction(): Promise<UserInfo | null> {
       if (!this.token) return null;
       const userInfo = await this.getUserInfoAction();
       return userInfo;
     },
-    // 获取用户信息
     async getUserInfoAction(): Promise<UserInfo | null> {
       if (!this.getToken) return null;
       const result = await getUserInfo();

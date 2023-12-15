@@ -81,7 +81,7 @@ export class Request {
     responseInterceptorsCatch &&
       isFunction(responseInterceptorsCatch) &&
       this.axiosInstance.interceptors.response.use(undefined, (error) => {
-        responseInterceptorsCatch(error);
+        return responseInterceptorsCatch(error);
       });
   }
 
@@ -140,9 +140,6 @@ export class Request {
           if (requestCatchHook && isFunction(requestCatchHook)) {
             reject(requestCatchHook(e, opt));
             return;
-          }
-          if (axios.isAxiosError(e)) {
-            // rewrite error message from axios in here
           }
           reject(e);
         });

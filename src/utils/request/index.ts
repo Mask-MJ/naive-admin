@@ -33,22 +33,14 @@ const transform: AxiosTransform = {
     if (isReturnNativeResponse) return res;
 
     // 不进行任何处理，直接返回
-    // 用于页面代码可能需要直接获取code，data，message这些信息时开启
     if (!isTransformResponse) return res.data;
 
     // 错误的时候返回
     if (!res) return '[HTTP] Request has no return value';
-    const { data } = res;
+    const { data, status } = res;
 
-    //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-    // const { code } = data;
-    const code = '';
-    // 这里逻辑可以根据项目进行修改
-    const hasSuccess = data && Reflect.has(data, 'code') && code.toString().startsWith('2');
-    if (hasSuccess) {
-      if (Reflect.has(data, 'data')) return (data as ResultData).data;
-      // else if (Reflect.has(data, 'rows')) return (data as ResPage).rows;
-      else return data;
+    if (status.toString().startsWith('2')) {
+      return data as ResultData;
     }
   },
 
@@ -121,14 +113,13 @@ const transform: AxiosTransform = {
    * @description: 响应错误处理
    */
   responseInterceptorsCatch: (error: any) => {
-    const { code, message } = error.response.data;
-
-    if (code === ResultEnum.TIMEOUT) {
+    const { statusCode, message } = error.response.data;
+    if (statusCode === ResultEnum.TIMEOUT) {
       const userStore = useUserStore();
       userStore.logout();
     }
 
-    message && window.$message.error(`${message}`);
+    message && window.$message.error(`${statusCode}: ${message}`);
     return Promise.reject(error);
   },
 };
