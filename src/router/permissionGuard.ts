@@ -33,9 +33,7 @@ function createPermissionGuard(router: Router) {
       next();
       return;
     }
-    // token or user does not exist
     if (!token) {
-      // redirect login page
       const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
         path: PageEnum.BASE_LOGIN,
         replace: true,
@@ -66,15 +64,20 @@ function createPermissionGuard(router: Router) {
     if (Object.keys(userStore.getUserInfo).length === 0) {
       await userStore.getUserInfoAction();
     }
-
     // 判断是否已经异步添加路由
     if (routerStore.isDynamicAddedRoute) {
-      next();
+      // 判断是否有权限访问
+      if (routerStore.getIsPermission(to.path)) {
+        next();
+      } else {
+        next({ path: PageEnum.BASE_HOME });
+      }
       return;
     }
     // 异步添加路由
     await routerStore.buildRoutesAction();
-    next();
+    routerStore.setDynamicAddedRoute(true);
+    next({ ...to, replace: true });
   });
 }
 

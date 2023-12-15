@@ -10,7 +10,7 @@ export interface MenuSearchParams {
 //   Menu = '/system/menu/',
 // }
 
-export const getMenuList = async (): Promise<RouteRecordRaw[]> => {
+export const getRouteList = async (): Promise<RouteRecordRaw[]> => {
   return [
     {
       name: 'Dashboard',

@@ -39,6 +39,12 @@ import type {
 
 declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {
+    '/[...all]': RouteRecordInfo<
+      '/[...all]',
+      '/:all(.*)',
+      { all: ParamValue<true> },
+      { all: ParamValue<false> }
+    >;
     '/dashboard/': RouteRecordInfo<
       '/dashboard/',
       '/dashboard',

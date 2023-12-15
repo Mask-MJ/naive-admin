@@ -1,16 +1,16 @@
 import type { RouteRecordRaw } from 'vue-router/auto';
 import { defineStore } from 'pinia';
 import { transformRouteToMenu, type Menu } from '../helper/router-helper';
-import { getMenuList } from '@/api/menu';
-// import { setupLayouts } from 'virtual:generated-layouts';
-// import { router } from '@/router';
-// import { routes } from 'vue-router/auto/routes';
+import { getRouteList } from '@/api/menu';
+import { flatMapDeep } from 'lodash-es';
 
 export interface RouterState {
   // 路由是否动态添加
   isDynamicAddedRoute: boolean;
   // 菜单列表
   menuList: Menu[];
+  // 后台返回的路由列表
+  backendRouteList: RouteRecordRaw[];
   // 缓存路由页面
   cacheRoutes: string[];
 }
@@ -19,9 +19,25 @@ export const useRouterStore = defineStore('router-store', {
   state: (): RouterState => ({
     isDynamicAddedRoute: false,
     menuList: [],
+    backendRouteList: [],
     cacheRoutes: [],
   }),
   actions: {
+    getIsPermission(path: string): boolean {
+      // 获取当前文件路由列表
+      // 获取后台返回的路由列表
+      // 对比后台返回的路由列表和文件路由列表
+      const backendRouteList = this.backendRouteList;
+      // 扁平化后台返回的路由列表
+      const flatBackendRouteList = flatMapDeep(backendRouteList, (route) => {
+        if (route.children && route.children.length) {
+          return route.children;
+        }
+        return route;
+      });
+
+      return flatBackendRouteList.some((route) => route.path === path);
+    },
     setMenuList(list: Menu[]) {
       this.menuList = list;
     },
@@ -36,26 +52,12 @@ export const useRouterStore = defineStore('router-store', {
       this.menuList = [];
     },
     // 构建路由
-    async buildRoutesAction(): Promise<RouteRecordRaw[]> {
-      // console.log('buildRoutesAction');
+    async buildRoutesAction() {
       // 获取后台路由
-      const menuList = await getMenuList();
-      // menuList.forEach((route: any) => {
-      //   console.log(routes);
-      //   if (1) {
-      //   }
-      // router.addRoute(route);
-      // 判断后台返回的路由对象是否在文件路由中存在
-      // const isExist = routes.find((item) => item.path === route.path);
-      // if (isExist) {
-      //   // 如果存在，则更新路由对象
-      //   Object.assign(isExist, route);
-      //   console.log('isExist', isExist);
-      // }
-      // });
+      this.backendRouteList = await getRouteList();
+
       // 转换为菜单列表
-      this.menuList = transformRouteToMenu(menuList);
-      return [];
+      this.menuList = transformRouteToMenu(this.backendRouteList);
     },
   },
 });
