@@ -57,28 +57,28 @@
   }
 
   /** 点击右键菜单 */
-  // async function handleContextMenu(e: MouseEvent, currentPath: string, affix?: boolean) {
-  //   e.preventDefault();
+  async function handleContextMenu(e: MouseEvent, currentPath: string, affix?: boolean) {
+    e.preventDefault();
 
-  //   const { clientX, clientY } = e;
+    const { clientX, clientY } = e;
 
-  //   isClickContextMenu = true;
+    isClickContextMenu = true;
 
-  //   const DURATION = dropdown.visible ? 150 : 0;
+    const DURATION = dropdown.visible ? 150 : 0;
 
-  //   setDropdown({ visible: false });
+    setDropdown({ visible: false });
 
-  //   setTimeout(() => {
-  //     setDropdown({
-  //       visible: true,
-  //       x: clientX,
-  //       y: clientY,
-  //       currentPath,
-  //       affix,
-  //     });
-  //     isClickContextMenu = false;
-  //   }, DURATION);
-  // }
+    setTimeout(() => {
+      setDropdown({
+        visible: true,
+        x: clientX,
+        y: clientY,
+        currentPath,
+        affix,
+      });
+      isClickContextMenu = false;
+    }, DURATION);
+  }
 
   watch(
     () => tab.activeTabIndex,
@@ -107,11 +107,9 @@
       }"
       @click="tab.handleClickTab(item.fullPath)"
       @close="tab.removeTab(item.fullPath)"
+      @contextmenu="handleContextMenu($event as MouseEvent, item.fullPath, item.meta.affix)"
     >
-      <i
-        :class="`icon-${item.meta.icon}`"
-        class="inline-block align-text-bottom mr-4px text-16px"
-      />
+      <i :class="`i-${item.meta.icon}`" class="inline-block align-text-bottom mr-4px text-16px" />
       {{ item.meta.title }}
     </component>
   </div>

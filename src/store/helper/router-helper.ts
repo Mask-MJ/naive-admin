@@ -1,3 +1,4 @@
+import { flatMapDeep } from 'lodash-es';
 import type { VNodeChild } from 'vue';
 import type { RouteRecordRaw, RouteMeta } from 'vue-router/auto';
 import { RouterLink } from 'vue-router/auto';
@@ -41,4 +42,11 @@ export function transformRouteToMenu(routeList: RouteRecordRaw[]): Menu[] {
       }
       return menu;
     });
+}
+
+//扁平化路由
+export function flatRoutes(routeList: RouteRecordRaw[]): RouteRecordRaw[] {
+  return flatMapDeep(routeList, (route) => {
+    return route.children && route.children.length ? route.children : route;
+  });
 }

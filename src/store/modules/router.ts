@@ -1,8 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router/auto';
 import { defineStore } from 'pinia';
-import { transformRouteToMenu, type Menu } from '../helper/router-helper';
+import { transformRouteToMenu, flatRoutes, type Menu } from '../helper/router-helper';
 import { getRouteList } from '@/api/menu';
-import { flatMapDeep } from 'lodash-es';
+import { router } from '@/router';
 
 export interface RouterState {
   // 路由是否动态添加
@@ -22,22 +22,15 @@ export const useRouterStore = defineStore('router-store', {
     backendRouteList: [],
     cacheRoutes: [],
   }),
-  actions: {
-    getIsPermission(path: string): boolean {
-      // 获取当前文件路由列表
-      // 获取后台返回的路由列表
-      // 对比后台返回的路由列表和文件路由列表
-      const backendRouteList = this.backendRouteList;
-      // 扁平化后台返回的路由列表
-      const flatBackendRouteList = flatMapDeep(backendRouteList, (route) => {
-        if (route.children && route.children.length) {
-          return route.children;
-        }
-        return route;
-      });
-
-      return flatBackendRouteList.some((route) => route.path === path);
+  getters: {
+    getIsPermission(state) {
+      return (path: string): boolean => {
+        // 扁平化后台返回的路由列表
+        return flatRoutes(state.backendRouteList).some((route) => route.path === path);
+      };
     },
+  },
+  actions: {
     setMenuList(list: Menu[]) {
       this.menuList = list;
     },
@@ -55,6 +48,23 @@ export const useRouterStore = defineStore('router-store', {
     async buildRoutesAction() {
       // 获取后台路由
       this.backendRouteList = await getRouteList();
+      // 获取文件路由
+      const routes = router.getRoutes().filter((route) => route.name);
+      // 对比后台返回的路由和文件路由
+      // 如果 path 相同,则将文件路由的 meta 属性合并到后台返回的路由中
+      flatRoutes(this.backendRouteList).forEach((backendRoute) => {
+        const route = routes.find((route) => route.path === backendRoute.path);
+        if (route) {
+          route.meta = {
+            ...(route.meta || {}),
+            ...(backendRoute.meta || {}),
+          };
+        }
+      });
+
+      const { initHomeTab } = useMultipleTabStore();
+      // 初始化首页路由
+      initHomeTab();
 
       // 转换为菜单列表
       this.menuList = transformRouteToMenu(this.backendRouteList);

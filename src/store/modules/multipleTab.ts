@@ -1,4 +1,4 @@
-import type { RouteLocationNormalizedLoaded, Router } from 'vue-router';
+import type { RouteLocationNormalizedLoaded } from 'vue-router';
 import { defineStore } from 'pinia';
 import {
   clearTabRoutes,
@@ -10,7 +10,8 @@ import {
 } from '../helper/tab-helper';
 import { useRouterPush } from '@/router/hooks';
 import { camelCase, upperFirst } from 'lodash-es';
-import { MULTIPLE_TABS_KEY } from '@/settings';
+import { PageEnum } from '@/settings';
+import { router } from '@/router';
 
 /** 多页签Tab的路由 */
 export interface GlobalTabRoute
@@ -34,17 +35,7 @@ interface TabState {
 export const useMultipleTabStore = defineStore('tab-store', {
   state: (): TabState => ({
     tabs: [],
-    homeTab: {
-      name: 'root',
-      fullPath: '/',
-      meta: {
-        title: 'Root',
-        icon: '',
-        show: false,
-        order: 1,
-      },
-      scrollPosition: { left: 0, top: 0 },
-    },
+    homeTab: {} as GlobalTabRoute,
     activeTab: '',
   }),
   getters: {
@@ -64,10 +55,6 @@ export const useMultipleTabStore = defineStore('tab-store', {
       clearTabRoutes();
       this.$reset();
     },
-    /** 缓存页签路由数据 */
-    cacheTabRoutes() {
-      useStorage(MULTIPLE_TABS_KEY, this.tabs);
-    },
     /**
      * 设置当前路由对应的页签为激活状态
      * @param fullPath - 路由fullPath
@@ -83,14 +70,9 @@ export const useMultipleTabStore = defineStore('tab-store', {
       const item = this.tabs.find((tab) => tab.fullPath === this.activeTab);
       if (item) item.meta.title = title;
     },
-    /**
-     * 初始化首页页签路由
-     * @param routeHomeName - 路由首页的name
-     * @param router - 路由实例
-     */
-    initHomeTab(routeHomeName: string, router: Router) {
+    initHomeTab() {
       const routes = router.getRoutes();
-      const findHome = routes.find((item) => item.name === routeHomeName);
+      const findHome = routes.find((item) => item.path === PageEnum.BASE_HOME);
       if (findHome && !findHome.children.length) {
         // 有子路由的不能作为Tab
         this.homeTab = getTabRouteByVueRoute(findHome);
