@@ -8,7 +8,7 @@
     {
       label: '用户中心',
       key: 'user-center',
-      icon: () => h('i', { class: 'i-carbon:user' }),
+      icon: () => h('i', { class: 'i-ant-design:user-outlined' }),
     },
     {
       type: 'divider',
@@ -17,7 +17,7 @@
     {
       label: '退出登录',
       key: 'logout',
-      icon: () => h('i', { class: 'i-carbon:logout' }),
+      icon: () => h('i', { class: 'i-ant-design:export-outlined' }),
     },
   ];
 

@@ -1,5 +1,6 @@
 import type { VNodeChild } from 'vue';
 import type { RouteRecordRaw, RouteMeta } from 'vue-router/auto';
+import { RouterLink } from 'vue-router/auto';
 
 export interface Menu {
   key: string;
@@ -11,14 +12,28 @@ export interface Menu {
   children?: Menu[];
 }
 
+// 判断后台返回的路由对象是否在文件路由中存在
+function getLabel(route: RouteRecordRaw) {
+  // 获取拼接的 route.name 来和 真实文件路由列表对比
+  if (route.children && route.children.length) {
+    return route.meta!.title ?? route.name;
+  } else if (route.meta!.link) {
+    return () => h('a', { href: route.meta!.link, target: '_blank' }, route.meta!.title);
+  } else {
+    const path = route.path.toLocaleLowerCase();
+    return () =>
+      h(RouterLink, { to: { path: path } }, { default: () => route.meta!.title ?? route.name });
+  }
+}
+
 export function transformRouteToMenu(routeList: RouteRecordRaw[]): Menu[] {
   return routeList
     .filter((route) => route.meta?.show !== false)
     .map((route) => {
       const menu: Menu = {
         key: route.path,
-        label: route.meta?.title || '',
-        icon: () => h('i', { class: route.meta?.icon }),
+        label: getLabel(route),
+        icon: () => h('i', { class: `i-${route.meta?.icon}` }),
         show: !route.meta?.hidden,
       };
       if (route.children && route.children.length > 0) {

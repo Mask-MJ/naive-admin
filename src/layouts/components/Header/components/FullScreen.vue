@@ -10,7 +10,7 @@
     :inverted="theme.header.inverted"
     @click="toggle"
   >
-    <i v-if="isFullscreen" class="text-18px i-carbon:minimize" />
-    <i v-else class="text-18px i-carbon:maximize" />
+    <i v-if="isFullscreen" class="text-18px i-ant-design:shrink-outlined" />
+    <i v-else class="text-18px i-ant-design:arrows-alt-outlined" />
   </hover-container>
 </template>

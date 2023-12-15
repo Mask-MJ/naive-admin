@@ -1,6 +1,9 @@
 import { defineConfig } from 'unocss/vite';
 import presetUno from 'unocss/preset-uno';
 import presetIcons from 'unocss/preset-icons';
+import { icons } from '@iconify-json/ant-design';
+
+const IconNames = Object.keys(icons.icons).map((iconName) => `i-${icons.prefix}:${iconName}`);
 
 export default defineConfig({
   transformers: [],
@@ -63,5 +66,5 @@ export default defineConfig({
       dark: '#18181c',
     },
   },
-  safelist: [...'prose prose-sm m-auto text-left'.split(' ')],
+  safelist: [...'prose prose-sm m-auto text-left'.split(' '), ...IconNames],
 });

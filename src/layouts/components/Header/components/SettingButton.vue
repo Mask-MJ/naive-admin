@@ -10,7 +10,7 @@
     :inverted="theme.header.inverted"
     @click="app.toggleSettingDrawerVisible()"
   >
-    <i class="text-20px i-carbon:settings" />
+    <i class="text-20px i-ant-design:setting-outlined" />
   </hover-container>
 </template>
 

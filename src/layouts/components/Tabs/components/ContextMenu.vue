@@ -43,33 +43,33 @@
       label: '重新加载',
       key: 'reload-current',
       disabled: props.currentPath !== tab.activeTab,
-      icon: () => h('i', { class: 'i-carbon:renew' }),
+      icon: () => h('i', { class: 'i-ant-design:reload-outlined' }),
     },
     {
       label: '关闭',
       key: 'close-current',
       disabled: props.currentPath === tab.homeTab.fullPath || Boolean(props.affix),
-      icon: () => h('i', { class: 'i-carbon:close' }),
+      icon: () => h('i', { class: 'i-ant-design:close-outlined' }),
     },
     {
       label: '关闭其他',
       key: 'close-other',
-      icon: () => h('i', { class: 'i-carbon:column-delete' }),
+      icon: () => h('i', { class: 'i-ant-design:funnel-plot-outlined' }),
     },
     {
       label: '关闭左侧',
       key: 'close-left',
-      icon: () => h('i', { class: 'i-carbon:arrow-left' }),
+      icon: () => h('i', { class: 'i-ant-design:arrow-left-outlined' }),
     },
     {
       label: '关闭右侧',
       key: 'close-right',
-      icon: () => h('i', { class: 'i-carbon:arrow-right' }),
+      icon: () => h('i', { class: 'i-ant-design:arrow-right-outlined' }),
     },
     {
       label: '关闭所有',
       key: 'close-all',
-      icon: () => h('i', { class: 'i-carbon:closed-caption' }),
+      icon: () => h('i', { class: 'i-ant-design:file-excel-outlined' }),
     },
   ]);
 
