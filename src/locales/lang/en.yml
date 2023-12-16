@@ -1,5 +1,6 @@
 app:
   name: VCM Admin
+  language: English
   logoutTip: Reminder
   logoutMessage: Confirm to exit the system?
   menuLoading: Menu loading...
@@ -13,6 +14,10 @@ header:
   dropdownItemLoginOut: Login Out
   userInfo: User info
   search: Search
+  themeConfig: Theme Config
+  themeLight: Light
+  themeDark: Dark
+  refresh: Refresh
 login:
   loginSuccessTitle: Login successful
   loginSuccessDesc: Welcome back

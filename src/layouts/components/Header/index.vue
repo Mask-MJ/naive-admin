@@ -8,6 +8,7 @@
     SystemMessage,
     ThemeMode,
     UserAvatar,
+    ToggleLang,
   } from './components';
   import { Logo } from '@/layouts/components';
   import { useBasicLayout } from '@/layouts/hooks';
@@ -46,6 +47,7 @@
     <div class="flex justify-end h-full">
       <FullScreen />
       <ThemeMode />
+      <ToggleLang />
       <SystemMessage />
       <UserAvatar />
       <SettingButton />

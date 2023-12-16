@@ -6,7 +6,7 @@
   const theme = useThemeStore();
   const options: DropdownOption[] = [
     {
-      label: '用户中心',
+      label: () => t('header.userInfo'),
       key: 'user-center',
       icon: () => h('i', { class: 'i-ant-design:user-outlined' }),
     },
@@ -15,7 +15,7 @@
       key: 'divider',
     },
     {
-      label: '退出登录',
+      label: () => t('header.dropdownItemLoginOut'),
       key: 'logout',
       icon: () => h('i', { class: 'i-ant-design:export-outlined' }),
     },

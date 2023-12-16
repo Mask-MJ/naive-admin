@@ -7,9 +7,20 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Action: (typeof import('./../src/components/Table/components/Action.vue'))['default'];
+    ApiSelect: (typeof import('./../src/components/Form/components/ApiSelect.vue'))['default'];
+    ApiTree: (typeof import('./../src/components/Form/components/ApiTree.vue'))['default'];
+    ApiTreeSelect: (typeof import('./../src/components/Form/components/ApiTreeSelect.vue'))['default'];
+    AutoComplete: (typeof import('./../src/components/Form/components/AutoComplete.vue'))['default'];
     DarkModeContainer: (typeof import('./../src/components/Common/DarkModeContainer.vue'))['default'];
     DarkModeSwitch: (typeof import('./../src/components/Common/DarkModeSwitch.vue'))['default'];
+    Descriptions: (typeof import('./../src/components/Descriptions/index.vue'))['default'];
+    Form: (typeof import('./../src/components/Form/index.vue'))['default'];
+    FormAction: (typeof import('./../src/components/Form/components/FormAction.vue'))['default'];
+    FormItemComponent: (typeof import('./../src/components/Form/components/FormItemComponent.vue'))['default'];
     HoverContainer: (typeof import('./../src/components/Common/HoverContainer.vue'))['default'];
+    IconPicker: (typeof import('./../src/components/Form/components/IconPicker.vue'))['default'];
+    Modal: (typeof import('./../src/components/Modal/index.vue'))['default'];
     NaiveProvider: (typeof import('./../src/components/Common/NaiveProvider.vue'))['default'];
     NAvatar: (typeof import('naive-ui'))['NAvatar'];
     NBackTop: (typeof import('naive-ui'))['NBackTop'];
@@ -49,8 +60,13 @@ declare module 'vue' {
     NTabPane: (typeof import('naive-ui'))['NTabPane'];
     NTabs: (typeof import('naive-ui'))['NTabs'];
     NTooltip: (typeof import('naive-ui'))['NTooltip'];
+    RadioGroup: (typeof import('./../src/components/Form/components/RadioGroup.vue'))['default'];
     RouterLink: (typeof import('vue-router'))['RouterLink'];
     RouterView: (typeof import('vue-router'))['RouterView'];
+    SelectPicker: (typeof import('./../src/components/Form/components/SelectPicker.vue'))['default'];
     SystemLogo: (typeof import('./../src/components/Common/SystemLogo.vue'))['default'];
+    Table: (typeof import('./../src/components/Table/index.vue'))['default'];
+    Toolbars: (typeof import('./../src/components/Table/components/Toolbars.vue'))['default'];
+    Upload: (typeof import('./../src/components/Form/components/Upload.vue'))['default'];
   }
 }

@@ -1,4 +1,5 @@
 <script setup lang="ts" name="SettingButton">
+  const { t } = useI18n();
   const app = useAppStore();
   const theme = useThemeStore();
 </script>
@@ -6,7 +7,7 @@
 <template>
   <hover-container
     class="w-40px h-full"
-    tooltip-content="主题配置"
+    :tooltip-content="t('header.themeConfig')"
     :inverted="theme.header.inverted"
     @click="app.toggleSettingDrawerVisible()"
   >

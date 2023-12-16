@@ -1,6 +1,7 @@
 <script setup lang="ts" name="ReloadButton">
   import useLoading from '@/hooks/useLoading';
 
+  const { t } = useI18n();
   const app = useAppStore();
   const { loading, startLoading, endLoading } = useLoading();
 
@@ -16,7 +17,7 @@
 <template>
   <hover-container
     class="w-64px h-full"
-    tooltip-content="重新加载"
+    :tooltip-content="t('header.refresh')"
     placement="bottom-end"
     @click="handleRefresh"
   >

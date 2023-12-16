@@ -2,11 +2,12 @@ import type { App } from 'vue';
 import { createI18n } from 'vue-i18n';
 import messages from '@intlify/unplugin-vue-i18n/messages';
 
-const locale = localStorage.getItem('LANG__KEY') || 'zh-CN';
+const locale = useStorage('LANGUAGE__', 'zh-CN');
+// const locale = localStorage.getItem('LANGUAGE__') || 'zh-CN';
 
 export const i18n = createI18n({
   legacy: false,
-  locale,
+  locale: locale.value,
   messages,
 });
 

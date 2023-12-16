@@ -1,5 +1,6 @@
 app:
-  name: VCM Admin
+  name: VCM 管理系统
+  language: 中文
   logoutTip: 温馨提醒
   logoutMessage: 是否确认退出系统?
   menuLoading: 菜单加载中...
@@ -13,6 +14,10 @@ header:
   dropdownItemLoginOut: 退出系统
   userInfo: 个人中心
   search: 搜索
+  themeConfig: 主题配置
+  themeLight: 亮色主题
+  themeDark: 暗色主题
+  refresh: 重新加载
 login:
   loginSuccessTitle: 登录成功
   loginSuccessDesc: 欢迎回来
