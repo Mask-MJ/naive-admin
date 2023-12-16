@@ -15,7 +15,6 @@ export default defineConfig({
   presets: [
     presetUno({ dark: 'class' }),
     presetIcons({
-      scale: 1.2,
       warn: true,
       extraProperties: {
         display: 'inline-block',

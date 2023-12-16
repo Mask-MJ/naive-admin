@@ -1,60 +1,79 @@
 <script setup lang="ts">
-  // import { routePath } from '@/router';
-  // import { useRouterPush } from '@/composables';
-  // import { getBreadcrumbByRouteKey } from '@/utils';
+  import { DropdownOption } from 'naive-ui';
+  import { useRouterPush } from '@/router/hooks';
+  import { RouteRecordRaw } from 'vue-router/auto';
+  const route = useRoute();
+  const theme = useThemeStore();
+  const routerStore = useRouterStore();
+  const { routerPush } = useRouterPush();
 
-  // defineOptions({ name: 'GlobalBreadcrumb' });
+  function getTopLevelMenu(path: string, routes: RouteRecordRaw[]): RouteRecordRaw | undefined {
+    return routes.find((item) => {
+      if (item.path === path) return true;
+      if (Array.isArray(item.children)) {
+        return getTopLevelMenu(path, item.children);
+      }
+      return false;
+    });
+  }
 
-  // const { t } = useI18n();
-  // const route = useRoute();
-  // const theme = useThemeStore();
-  // const routerStore = useRouterStore();
-  // const { routerPush } = useRouterPush();
+  function generateBreadcrumbs(routes: RouteRecordRaw[]): DropdownOption[] {
+    return routes.map((route) => {
+      const list: DropdownOption = {
+        label: route.meta!.title,
+        key: route.path,
+        icon: () => h('i', { class: `i-${route.meta!.icon}` }),
+      };
+      if (route.children && route.children.length > 0) {
+        list.children = generateBreadcrumbs(route.children);
+      }
+      return list;
+    });
+  }
 
-  // const breadcrumbs = computed(() =>
-  //   getBreadcrumbByRouteKey(
-  //     route.name as string,
-  //     routerStore.menus as App.GlobalMenuOption[],
-  //     routePath('root'),
-  //   ).map((item) => ({
-  //     ...item,
-  //     label: item.i18nTitle ? t(item.i18nTitle) : item.label,
-  //     options: item.options?.map((oItem) => ({
-  //       ...oItem,
-  //       label: oItem.i18nTitle ? t(oItem.i18nTitle) : oItem.label,
-  //     })),
-  //   })),
-  // );
+  const breadcrumbs = computed(() => {
+    const topLevelMenu = getTopLevelMenu(route.path, routerStore.backendRouteList);
+    // 获取当前路由菜单
+    if (topLevelMenu && topLevelMenu.children) {
+      topLevelMenu.children = topLevelMenu.children.filter((item) => !item.meta?.hidden);
+      const currentRoute = topLevelMenu.children.find((item) => item.path === route.path);
+      return generateBreadcrumbs([topLevelMenu, currentRoute!]);
+    }
+    return generateBreadcrumbs([topLevelMenu!]);
+  });
 
-  // function dropdownSelect(key: string) {
-  //   routerPush({ name: key });
-  // }
+  function dropdownSelect(key: string) {
+    routerPush({ path: key });
+  }
 </script>
 
 <template>
-  <!-- <n-breadcrumb class="px-12px">
+  <n-breadcrumb class="px-12px">
     <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.key">
       <n-breadcrumb-item>
         <n-dropdown
-          v-if="breadcrumb.hasChildren"
-          :options="breadcrumb.options"
+          v-if="breadcrumb.children && breadcrumb.children.length > 0"
+          :options="breadcrumb.children"
           @select="dropdownSelect"
         >
           <span>
             <component
               :is="breadcrumb.icon"
               v-if="theme.header.crumb.showIcon"
+              :class="{ 'text-#BBBBBB': theme.header.inverted }"
               class="inline-block align-text-bottom mr-4px text-16px"
             />
-            <span>{{ breadcrumb.label }}</span>
+            <span :class="{ 'text-#BBBBBB': theme.header.inverted }">
+              {{ breadcrumb.label }}
+            </span>
           </span>
         </n-dropdown>
         <template v-else>
           <component
             :is="breadcrumb.icon"
             v-if="theme.header.crumb.showIcon"
-            class="inline-block align-text-bottom mr-4px text-16px"
             :class="{ 'text-#BBBBBB': theme.header.inverted }"
+            class="inline-block align-text-bottom mr-4px text-16px"
           />
           <span :class="{ 'text-#BBBBBB': theme.header.inverted }">
             {{ breadcrumb.label }}
@@ -62,7 +81,7 @@
         </template>
       </n-breadcrumb-item>
     </template>
-  </n-breadcrumb> -->
+  </n-breadcrumb>
   <div></div>
 </template>
 
