@@ -1,7 +1,8 @@
 <script setup lang="ts" name="ButtonTab">
+  import IconClose from './IconClose.vue';
   import { computed } from 'vue';
   import { CssRender } from 'css-render';
-  import IconClose from './IconClose.vue';
+
   import useBoolean from '@/hooks/useBoolean';
   import { addColorAlpha } from '@/utils/color';
 

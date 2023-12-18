@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { indexOf, remove, range } from 'lodash-es';
+  import { indexOf, range, remove } from 'lodash-es';
+
   import { SelectPickerOption } from '../component';
   import { inputDateRange } from '../hooks/useTimeData';
 

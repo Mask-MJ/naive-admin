@@ -1,13 +1,15 @@
-import type { AxiosResponse } from 'axios';
-import type { RequestOptions, Result, ResultData } from './types';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
+import type { RequestOptions, Result, ResultData } from './types';
+import type { AxiosResponse } from 'axios';
 
 import { clone, isString, merge } from 'lodash-es';
-import { Request } from './request';
-import { ContentTypeEnum, RequestMethodEnum, ResultEnum } from './enum';
+
 import { TOKEN_KEY } from '@/settings';
-import { formatRequestDate, joinTimestamp } from './helper';
 import { getAppEnvConfig } from '@/utils/env';
+
+import { ContentTypeEnum, RequestMethodEnum, ResultEnum } from './enum';
+import { formatRequestDate, joinTimestamp } from './helper';
+import { Request } from './request';
 
 const { VITE_GLOB_API_URL_PREFIX } = getAppEnvConfig();
 const urlPrefix = VITE_GLOB_API_URL_PREFIX;

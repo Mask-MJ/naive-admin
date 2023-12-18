@@ -1,5 +1,5 @@
-import type { RowKey } from 'naive-ui/es/data-table/src/interface';
 import type { BasicTableProps } from '../types';
+import type { RowKey } from 'naive-ui/es/data-table/src/interface';
 
 export function useRowSelection(propsRef: ComputedRef<BasicTableProps>) {
   // 选中行的key checkedRowKeys 优先,没有的话就用 defaultCheckedRowKeys

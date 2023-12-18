@@ -1,14 +1,15 @@
 import type {
-  UseModalReturnType,
   ModalMethods,
   ReturnMethods,
   UseModalInnerReturnType,
+  UseModalReturnType,
 } from '../type';
 
-import { isProdMode } from '@/utils/env';
-import { isEqual, isFunction } from 'lodash-es';
 import { tryOnUnmounted } from '@vueuse/core';
+import { isEqual, isFunction } from 'lodash-es';
 import { ModalProps } from 'naive-ui';
+
+import { isProdMode } from '@/utils/env';
 
 const dataTransfer = reactive<any>({});
 

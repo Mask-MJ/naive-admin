@@ -1,8 +1,9 @@
-import type { ComputedRef } from 'vue';
-import type { PaginationProps } from 'naive-ui';
 import type { BasicTableProps } from '../types';
+import type { PaginationProps } from 'naive-ui';
+import type { ComputedRef } from 'vue';
 
 import { isBoolean } from 'lodash-es';
+
 import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../constants';
 
 export function usePagination(refProps: ComputedRef<BasicTableProps>) {

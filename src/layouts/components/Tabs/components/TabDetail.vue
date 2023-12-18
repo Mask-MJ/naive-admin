@@ -1,8 +1,8 @@
 <script setup lang="ts" name="TabDetail">
-  import { computed, nextTick, reactive, ref, watch } from 'vue';
   import ButtonTab from './ButtonTab.vue';
   import ChromeTab from './ChromeTab.vue';
   import ContextMenu from './ContextMenu.vue';
+  import { computed, nextTick, reactive, ref, watch } from 'vue';
 
   interface Emits {
     (e: 'scroll', clientX: number): void;

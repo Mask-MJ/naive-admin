@@ -1,6 +1,7 @@
-import { computed } from 'vue';
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 import type { HeaderProps, ThemeLayoutMode } from '@/settings/theme';
+
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
+import { computed } from 'vue';
 
 type LayoutMode = 'vertical' | 'horizontal';
 type LayoutHeaderProps = Record<ThemeLayoutMode, HeaderProps>;

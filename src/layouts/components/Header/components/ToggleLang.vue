@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { LANGUAGE__KEY } from '@/settings';
+
   const theme = useThemeStore();
   const { locale } = useI18n();
   const language = useStorage(LANGUAGE__KEY, 'zh-CN');

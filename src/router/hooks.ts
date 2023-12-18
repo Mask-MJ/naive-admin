@@ -1,7 +1,10 @@
-import { useRouter } from 'vue-router';
 import type { RouteLocationRaw } from 'vue-router/auto';
-import { router as globalRouter } from './index';
+
+import { useRouter } from 'vue-router';
+
 import { PageEnum } from '@/settings';
+
+import { router as globalRouter } from './index';
 
 /**
  * 路由跳转

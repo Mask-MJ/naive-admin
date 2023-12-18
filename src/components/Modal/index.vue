@@ -1,8 +1,9 @@
 <script setup lang="ts" name="BasicModal">
-  import type { ModalProps } from 'naive-ui';
   import type { ModalMethods } from './type';
+  import type { ModalProps } from 'naive-ui';
 
   import { merge } from 'lodash';
+
   import { basicProps } from './props';
 
   const attrs = useAttrs();

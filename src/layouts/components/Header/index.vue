@@ -1,4 +1,7 @@
 <script setup lang="ts" name="LayoutHeader">
+  import { Logo } from '@/layouts/components';
+  import { useBasicLayout } from '@/layouts/hooks';
+
   import {
     Breadcrumb,
     FullScreen,
@@ -7,11 +10,9 @@
     SettingButton,
     SystemMessage,
     ThemeMode,
-    UserAvatar,
     ToggleLang,
+    UserAvatar,
   } from './components';
-  import { Logo } from '@/layouts/components';
-  import { useBasicLayout } from '@/layouts/hooks';
 
   defineProps({
     showLogo: { type: Boolean },

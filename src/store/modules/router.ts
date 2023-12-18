@@ -1,8 +1,12 @@
+import type { Menu } from '../helper/router-helper';
 import type { RouteRecordRaw } from 'vue-router/auto';
+
 import { defineStore } from 'pinia';
-import { transformRouteToMenu, flatRoutes, type Menu } from '../helper/router-helper';
+
 import { getRouteList } from '@/api/menu';
 import { router } from '@/router';
+
+import { flatRoutes, transformRouteToMenu } from '../helper/router-helper';
 
 export interface RouterState {
   // 路由是否动态添加

@@ -1,4 +1,5 @@
 import { modalProps } from 'naive-ui';
+
 import { i18n } from '@/locales';
 
 const { t } = i18n.global;

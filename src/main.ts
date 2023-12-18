@@ -1,12 +1,14 @@
 import 'uno.css';
 import '@/styles/index.scss';
-import { createApp } from 'vue';
-import App from './App.vue';
 
-import { setupStore } from '@/store';
+import App from './App.vue';
+import { createHead } from '@unhead/vue';
+import { createApp } from 'vue';
+
 import { setupI18n } from '@/locales';
 import { setupRouter } from '@/router';
-import { createHead } from '@unhead/vue';
+import { setupStore } from '@/store';
+
 // Create a global head instance
 
 function setupApp() {

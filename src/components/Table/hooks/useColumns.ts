@@ -1,11 +1,13 @@
-import type { ComputedRef } from 'vue';
+import type { BasicColumn, BasicTableProps, GetColumnsParams } from '../types';
 import type { PaginationProps } from 'naive-ui';
-import type { BasicTableProps, BasicColumn, GetColumnsParams } from '../types';
+import type { ComputedRef } from 'vue';
 
-import { isArray, isBoolean, isFunction, isString, cloneDeep, isEqual } from 'lodash-es';
+import { cloneDeep, isArray, isBoolean, isEqual, isFunction, isString } from 'lodash-es';
+
 import { i18n } from '@/locales';
 
 import { DEFAULT_ALIGN, PAGE_SIZE } from '../constants';
+
 // 处理传入的column  默认居中 添加ellipsis
 function handleItem(item: BasicColumn, ellipsis: boolean | object) {
   const { children } = item;

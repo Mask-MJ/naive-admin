@@ -1,7 +1,9 @@
 <script setup lang="ts">
-  import { DropdownOption } from 'naive-ui';
-  import { useRouterPush } from '@/router/hooks';
   import { RouteRecordRaw } from 'vue-router/auto';
+  import { DropdownOption } from 'naive-ui';
+
+  import { useRouterPush } from '@/router/hooks';
+
   const route = useRoute();
   const theme = useThemeStore();
   const routerStore = useRouterStore();

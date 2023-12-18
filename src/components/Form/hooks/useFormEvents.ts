@@ -1,16 +1,16 @@
+import type { BasicFormProps, FormActionType, FormSchema } from '../types';
 import type { ComputedRef, Ref } from 'vue';
-import type { BasicFormProps, FormSchema, FormActionType } from '../types';
 
 import {
+  cloneDeep,
   isArray,
-  isFunction,
-  isObject,
   isEmpty,
+  isFunction,
+  isNull,
+  isObject,
   isString,
   isUndefined,
-  isNull,
   merge,
-  cloneDeep,
   uniqBy,
 } from 'lodash-es';
 

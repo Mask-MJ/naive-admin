@@ -1,26 +1,27 @@
-import { CSSProperties } from 'vue';
 import type { UploadFileParams } from './types';
-import type { FormActionType, FormSchema } from '@/components/Form/types';
 import type {
-  InputProps,
-  InputNumberProps,
-  SelectProps,
-  TreeSelectProps,
-  TreeProps,
-  RadioGroupProps,
-  CheckboxProps,
-  CheckboxGroupProps,
   AutoCompleteProps,
   CascaderProps,
+  CheckboxGroupProps,
+  CheckboxProps,
   DatePickerProps,
-  TimePickerProps,
-  SwitchProps,
-  SliderProps,
   DividerProps,
+  InputNumberProps,
+  InputProps,
+  RadioGroupProps,
   RateProps,
+  SelectProps,
+  SliderProps,
+  SwitchProps,
   TagProps,
+  TimePickerProps,
+  TreeProps,
+  TreeSelectProps,
   UploadProps,
 } from 'naive-ui';
+import type { FormActionType, FormSchema } from '@/components/Form/types';
+
+import { CSSProperties } from 'vue';
 
 interface NInput {
   component: 'NInput';

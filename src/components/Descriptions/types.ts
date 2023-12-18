@@ -1,4 +1,4 @@
-import type { DescriptionsProps, DescriptionItemProps } from 'naive-ui';
+import type { DescriptionItemProps, DescriptionsProps } from 'naive-ui';
 
 export type DescItem = DescriptionItemProps & {
   path: string;

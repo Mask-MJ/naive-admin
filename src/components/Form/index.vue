@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  import type { BasicFormProps, FormSchema, FormActionType, FormAction } from './types';
+  import type { BasicFormProps, FormAction, FormActionType, FormSchema } from './types';
 
-  import { basicProps } from './props';
-  import { useFormEvents } from './hooks/useFormEvents';
-  import { useFormValues } from './hooks/useFormValues';
-  import { createFormItemRule } from './helper';
-
+  import FormActionComp from './components/FormAction.vue';
+  import FormItemComponent from './components/FormItemComponent.vue';
+  import { isBoolean, isFunction, merge } from 'lodash-es';
   import { NFormItemGi } from 'naive-ui';
-  import { isFunction, isBoolean, merge } from 'lodash-es';
+
   import { dateUtil } from '@/utils';
 
-  import FormItemComponent from './components/FormItemComponent.vue';
-  import FormActionComp from './components/FormAction.vue';
+  import { createFormItemRule } from './helper';
+  import { useFormEvents } from './hooks/useFormEvents';
+  import { useFormValues } from './hooks/useFormValues';
+  import { basicProps } from './props';
 
   const attrs = useAttrs();
   const props = defineProps(basicProps);

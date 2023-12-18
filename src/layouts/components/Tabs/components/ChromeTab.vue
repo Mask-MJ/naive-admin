@@ -1,7 +1,8 @@
 <script setup lang="ts" name="ChromeTab">
-  import { CssRender } from 'css-render';
-  import SvgRadiusBg from './SvgRadiusBg.vue';
   import IconClose from './IconClose.vue';
+  import SvgRadiusBg from './SvgRadiusBg.vue';
+  import { CssRender } from 'css-render';
+
   import useBoolean from '@/hooks/useBoolean';
 
   /** 填充颜色： [默认颜色, 暗黑主题颜色] */

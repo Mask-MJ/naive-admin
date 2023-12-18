@@ -1,30 +1,30 @@
-import type { Component } from 'vue';
 import type { ComponentType } from './component';
+import type { Component } from 'vue';
 
-import {
-  NInput,
-  NSelect,
-  NCheckbox,
-  NCheckboxGroup,
-  NCascader,
-  NDatePicker,
-  NInputNumber,
-  NSwitch,
-  NTimePicker,
-  NTreeSelect,
-  NTree,
-  NSlider,
-  NRate,
-  NDivider,
-} from 'naive-ui';
+import ApiSelect from './components/ApiSelect.vue';
 import ApiTree from './components/ApiTree.vue';
 import ApiTreeSelect from './components/ApiTreeSelect.vue';
 import AutoComplete from './components/AutoComplete.vue';
-import ApiSelect from './components/ApiSelect.vue';
-import RadioGroup from './components/RadioGroup.vue';
 import IconPicker from './components/IconPicker.vue';
+import RadioGroup from './components/RadioGroup.vue';
 import SelectPicker from './components/SelectPicker.vue';
 import Upload from './components/Upload.vue';
+import {
+  NCascader,
+  NCheckbox,
+  NCheckboxGroup,
+  NDatePicker,
+  NDivider,
+  NInput,
+  NInputNumber,
+  NRate,
+  NSelect,
+  NSlider,
+  NSwitch,
+  NTimePicker,
+  NTree,
+  NTreeSelect,
+} from 'naive-ui';
 
 export const componentMap = new Map<ComponentType, Component>();
 

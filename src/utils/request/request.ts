@@ -1,3 +1,4 @@
+import type { CreateAxiosOptions } from './axiosTransform';
 import type {
   AxiosError,
   AxiosInstance,
@@ -5,10 +6,11 @@ import type {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
-import type { CreateAxiosOptions } from './axiosTransform';
+
 import axios from 'axios';
-import qs from 'qs';
 import { cloneDeep, isFunction } from 'lodash-es';
+import qs from 'qs';
+
 import { ContentTypeEnum, RequestMethodEnum } from './enum';
 import { RequestOptions, Result } from './types';
 

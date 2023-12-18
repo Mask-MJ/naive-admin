@@ -1,8 +1,11 @@
-import { defineStore } from 'pinia';
 import type { RemovableRef } from '@vueuse/core';
+
+import { defineStore } from 'pinia';
+
+import { doLogout, getUserInfo, login } from '@/api/system/user';
+import { LoginParams, UserInfo } from '@/api/system/user.type';
 import { router } from '@/router';
 import { PageEnum, TOKEN_KEY, USER_INFO_KEY } from '@/settings';
-import { doLogout, getUserInfo, login, LoginParams, UserInfo } from '@/api/user';
 
 interface UserState {
   userInfo: RemovableRef<UserInfo>;

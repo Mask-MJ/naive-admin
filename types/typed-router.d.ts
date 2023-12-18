@@ -8,34 +8,15 @@
 /// <reference types="unplugin-vue-router/client" />
 
 import type {
-  // type safe route locations
-  RouteLocationTypedList,
-  RouteLocationResolvedTypedList,
-  RouteLocationNormalizedTypedList,
-  RouteLocationNormalizedLoadedTypedList,
-  RouteLocationAsString,
-  RouteLocationAsRelativeTypedList,
-  RouteLocationAsPathTypedList,
-
-  // helper types
-  // route definitions
-  RouteRecordInfo,
-  ParamValue,
-  ParamValueOneOrMore,
-  ParamValueZeroOrMore,
-  ParamValueZeroOrOne,
-
-  // vue-router extensions
-  _RouterTyped,
-  RouterLinkTyped,
-  RouterLinkPropsTyped,
-  NavigationGuard,
-  UseLinkFnTyped,
-
-  // data fetching
-  _DataLoader,
-  _DefineLoaderOptions,
-} from 'unplugin-vue-router/types'
+// type safe route locations
+RouteLocationTypedList, RouteLocationResolvedTypedList, RouteLocationNormalizedTypedList, RouteLocationNormalizedLoadedTypedList, RouteLocationAsString, RouteLocationAsRelativeTypedList, RouteLocationAsPathTypedList,
+// helper types
+// route definitions
+RouteRecordInfo, ParamValue, ParamValueOneOrMore, ParamValueZeroOrMore, ParamValueZeroOrOne,
+// vue-router extensions
+_RouterTyped, RouterLinkTyped, RouterLinkPropsTyped, NavigationGuard, UseLinkFnTyped,
+// data fetching
+_DataLoader, _DefineLoaderOptions } from 'unplugin-vue-router/types';
 
 declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {

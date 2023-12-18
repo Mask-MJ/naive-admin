@@ -1,9 +1,11 @@
-import type { ComputedRef } from 'vue';
-import type { PaginationProps } from 'naive-ui';
 import type { BasicTableProps, FetchParams } from '../types';
+import type { PaginationProps } from 'naive-ui';
+import type { ComputedRef } from 'vue';
 
-import { isFunction, isBoolean, get, merge, isObject } from 'lodash-es';
+import { get, isBoolean, isFunction, isObject, merge } from 'lodash-es';
+
 import { useTimeoutFn } from '@/hooks/useTimeout';
+
 import { FETCH_SETTING, PAGE_SIZE } from '../constants';
 
 interface ActionType {

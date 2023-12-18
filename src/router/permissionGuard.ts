@@ -1,4 +1,5 @@
 import type { Router } from 'vue-router/auto';
+
 import { PageEnum } from '@/settings';
 
 function createPageGuard(router: Router) {

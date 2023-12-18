@@ -1,6 +1,6 @@
-import type { FormItemRule } from 'naive-ui';
 import type { ComponentType } from './component';
 import type { FormSchema } from './types';
+import type { FormItemRule } from 'naive-ui';
 
 import { i18n } from '@/locales';
 

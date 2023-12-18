@@ -7,7 +7,7 @@ export const PAGE_SIZE = 10;
 // Common interface field settings
 export const FETCH_SETTING = {
   // The field name of the current page passed to the background
-  pageField: 'pageNum',
+  pageField: 'page',
   // The number field name of each page displayed in the background
   sizeField: 'pageSize',
   // Field name of the form data returned by the interface

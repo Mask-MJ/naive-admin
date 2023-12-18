@@ -1,5 +1,5 @@
 <script setup lang="ts" name="Description">
-  import type { DescItem, DescriptionProps, DescInstance } from './types';
+  import type { DescInstance, DescItem, DescriptionProps } from './types';
 
   import { get, isFunction } from 'lodash-es';
 

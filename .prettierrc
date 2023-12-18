@@ -6,5 +6,26 @@
   "trailingComma": "all",
   "proseWrap": "never",
   "htmlWhitespaceSensitivity": "strict",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "importOrder": [
+    "<TYPES>",
+    "<TYPES>^[@/types]",
+    "",
+    "vue",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/env(.*)$",
+    "^@/config/(.*)$",
+    "^@/lib/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/components/ui/(.*)$",
+    "^@/components/(.*)$",
+    "^@/styles/(.*)$",
+    "^@/(.*)$",
+    "",
+    "^[./]"
+  ],
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports"
+  ]
 }

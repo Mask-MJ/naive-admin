@@ -1,6 +1,6 @@
+import type { GlobalTabRoute } from '../modules/multipleTab';
 import type { RouteLocationNormalizedLoaded, RouteRecordNormalized } from 'vue-router';
 import type { RemovableRef } from '@vueuse/core';
-import type { GlobalTabRoute } from '../modules/multipleTab';
 
 /**
  * 根据vue路由获取tab路由

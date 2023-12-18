@@ -1,5 +1,6 @@
 <script setup lang="ts" name="ColorModal">
   import ColorCheckbox from './ColorCheckbox.vue';
+
   import { traditionColors } from '@/settings';
 
   interface Props {

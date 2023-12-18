@@ -1,6 +1,7 @@
-import type { ComputedRef, Slots } from 'vue';
 import type { BasicTableProps, FetchParams } from '../types';
+import type { ComputedRef, Slots } from 'vue';
 import type { BasicFormProps } from '@/components/Form';
+
 import { isFunction } from 'lodash-es';
 
 export function useTableForm(

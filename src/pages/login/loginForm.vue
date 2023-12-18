@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import type { FormInst, FormRules } from 'naive-ui';
-  import { register } from '@/api/user';
+
+  import { register } from '@/api/system/user';
 
   const { login } = useUserStore();
 
@@ -68,3 +69,4 @@
     </n-space>
   </n-form>
 </template>
+@/api/system/user

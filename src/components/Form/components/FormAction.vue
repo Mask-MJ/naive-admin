@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import type { GridProps, FormItemGiProps } from 'naive-ui';
-  import type { FormSchema, FormAction } from '../types';
+  import type { FormAction, FormSchema } from '../types';
+  import type { FormItemGiProps, GridProps } from 'naive-ui';
 
   const { t } = useI18n();
   const emits = defineEmits(['action']);
@@ -55,7 +55,8 @@
     <n-button v-if="isShowAdvanced" quaternary @click="toggleAdvanced">
       {{ formGrid.collapsed ? t('components.form.unfold') : t('components.form.putAway') }}
       <template #icon>
-        <i :class="formGrid.collapsed ? 'i-carbon:chevron-down' : 'i-carbon:chevron-up'"></i>
+        <i :class="formGrid.collapsed ? 'i-ant-design:down-outlined' : 'i-ant-design:up-outlined'">
+        </i>
       </template>
     </n-button>
   </n-space>

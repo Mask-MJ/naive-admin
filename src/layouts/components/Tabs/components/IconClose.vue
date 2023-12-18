@@ -1,7 +1,8 @@
 <script lang="ts" setup name="IconClose">
-  import { CssRender } from 'css-render';
   import SvgClose from './SvgClose.vue';
   import SvgCloseCircle from './SvgCloseCircle.vue';
+  import { CssRender } from 'css-render';
+
   import useBoolean from '@/hooks/useBoolean';
 
   interface Props {

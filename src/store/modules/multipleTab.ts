@@ -1,5 +1,12 @@
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
+
+import { camelCase, upperFirst } from 'lodash-es';
 import { defineStore } from 'pinia';
+
+import { router } from '@/router';
+import { useRouterPush } from '@/router/hooks';
+import { PageEnum } from '@/settings';
+
 import {
   clearTabRoutes,
   getIndexInTabRoutes,
@@ -8,10 +15,6 @@ import {
   getTabRoutes,
   isInTabRoutes,
 } from '../helper/tab-helper';
-import { useRouterPush } from '@/router/hooks';
-import { camelCase, upperFirst } from 'lodash-es';
-import { PageEnum } from '@/settings';
-import { router } from '@/router';
 
 /** 多页签Tab的路由 */
 export interface GlobalTabRoute

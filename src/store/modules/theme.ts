@@ -1,16 +1,17 @@
-import type { RemovableRef } from '@vueuse/core';
 import type {
+  Theme,
   ThemeAnimateMode,
   ThemeHorizontalMenuPosition,
   ThemeLayoutMode,
   ThemeTabMode,
-  Theme,
 } from '@/settings';
+import type { RemovableRef } from '@vueuse/core';
+
+import { darkTheme } from 'naive-ui';
+import { defineStore } from 'pinia';
 
 import { THEME_SETTINGS } from '@/settings';
 
-import { defineStore } from 'pinia';
-import { darkTheme } from 'naive-ui';
 import { getNaiveThemeOverrides, initThemeSettings } from '../helper/theme-helper';
 
 export const useThemeStore = defineStore('theme-store', {

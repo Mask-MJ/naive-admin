@@ -1,7 +1,9 @@
 <script lang="ts" setup>
   import type { DropdownProps } from 'naive-ui';
-  import { NTooltip, NButton, NPopconfirm } from 'naive-ui';
+
   import { isBoolean, isFunction } from 'lodash-es';
+  import { NButton, NPopconfirm, NTooltip } from 'naive-ui';
+
   import { ActionItem, DropdownItem } from '../types';
 
   const props = defineProps({
@@ -41,7 +43,7 @@
       .map((action): ActionItem => {
         if (action.type === 'edit') {
           return {
-            icon: 'i-carbon:edit',
+            icon: 'i-ant-design:edit-outlined',
             tooltipProps: { content: '编辑' },
             buttonProps: {
               type: 'primary',
@@ -50,7 +52,7 @@
           };
         } else if (action.type === 'del') {
           return {
-            icon: 'i-carbon:delete',
+            icon: 'i-ant-design:delete-outlined',
             tooltipProps: { content: '删除' },
             buttonProps: { type: 'error' },
             popConfirmProps: {
@@ -119,7 +121,7 @@
       </template>
       <n-dropdown v-if="dropDownActions.length > 0" v-bind="getDropDownProps">
         <NButton quaternary size="small">
-          <i class="i-carbon:overflow-menu-horizontal"></i>
+          <i class="i-ant-design:ellipsis-outlined"></i>
         </NButton>
       </n-dropdown>
     </n-space>

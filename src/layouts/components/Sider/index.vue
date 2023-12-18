@@ -1,6 +1,6 @@
 <script setup lang="ts" name="LayoutSider">
-  import BasicSider from './BasicSider/index.vue';
   import BasicMixSider from './BasicMixSider/index.vue';
+  import BasicSider from './BasicSider/index.vue';
 
   const theme = useThemeStore();
   const isVerticalMix = computed(() => theme.layout.mode === 'vertical-mix');

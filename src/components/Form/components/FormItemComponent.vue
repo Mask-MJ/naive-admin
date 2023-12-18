@@ -1,9 +1,12 @@
 <script setup lang="tsx">
-  import type { FormSchema, FormActionType } from '../types';
-  import { upperFirst, isFunction } from 'lodash-es';
+  import type { FormActionType, FormSchema } from '../types';
+
+  import { isFunction, upperFirst } from 'lodash-es';
+
   import { getSlot } from '@/utils';
-  import { createPlaceholderMessage } from '../helper';
+
   import { componentMap } from '../componentMap';
+  import { createPlaceholderMessage } from '../helper';
 
   const slots = useSlots();
   const emits = defineEmits(['pathValueChange']);

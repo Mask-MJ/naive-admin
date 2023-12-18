@@ -1,8 +1,9 @@
-import { effectScope, onScopeDispose, watch } from 'vue';
-import { useOsTheme } from 'naive-ui';
 import type { GlobalThemeOverrides } from 'naive-ui';
+
 import { useElementSize } from '@vueuse/core';
+import { effectScope, onScopeDispose, watch } from 'vue';
 import { kebabCase } from 'lodash-es';
+import { useOsTheme } from 'naive-ui';
 
 /** 订阅theme store */
 export function subscribeThemeStore() {

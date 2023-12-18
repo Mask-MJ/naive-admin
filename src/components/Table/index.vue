@@ -1,18 +1,20 @@
 <script setup lang="ts">
-  import type { DataTableProps } from 'naive-ui';
   import type { BasicTableProps, TableActionType, TableSize } from './types';
+  import type { DataTableProps } from 'naive-ui';
+
   import Toolbars from './components/Toolbars.vue';
-  import { basicProps } from './props';
+
+  import { useForm } from '@/components/Form';
+
   import {
-    useLoading,
-    useDataSource,
-    usePagination,
     useColumns,
+    useDataSource,
+    useLoading,
+    usePagination,
     useRowSelection,
     useTableForm,
   } from './hooks';
-
-  import { useForm } from '@/components/Form';
+  import { basicProps } from './props';
 
   const slots = useSlots();
   // const attrs = useAttrs();
@@ -155,7 +157,7 @@
     <dark-mode-container
       v-if="getBindValues.useSearchForm"
       class="p-4 pb-0"
-      :class="getProps.outermost ? 'rounded-lg shadow-xl mb-4' : ''"
+      :class="getProps.outermost ? 'rounded-lg shadow-md mb-4' : ''"
     >
       <Form
         ref="formRef"
@@ -175,7 +177,7 @@
     <!-- 表格内容 card -->
     <dark-mode-container
       class="p-4 flex-1"
-      :class="getProps.outermost ? 'rounded-lg shadow-xl mb-4' : ''"
+      :class="getProps.outermost ? 'rounded-lg shadow-md mb-4' : ''"
     >
       <!-- 表格头部 操作按钮 -->
       <div class="flex-between mb-2">

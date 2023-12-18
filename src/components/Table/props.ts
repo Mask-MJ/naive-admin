@@ -1,8 +1,10 @@
+import type { BasicColumn, FetchSetting } from './types';
+import type { DataTableColumn } from 'naive-ui';
 import type { PropType } from 'vue';
 import type { BasicFormProps } from '@/components/Form';
-import type { FetchSetting, BasicColumn } from './types';
-import type { DataTableColumn } from 'naive-ui';
+
 import { dataTableProps } from 'naive-ui';
+
 import { FETCH_SETTING } from './constants';
 
 export const basicProps = {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import type { AutoCompleteOption } from 'naive-ui';
+
   import { get, isArray, isFunction } from 'lodash-es';
 
   const attrs = useAttrs();
@@ -20,7 +21,7 @@
   const loading = ref(false);
   const isFirstLoad = ref(true);
   const value = ref('');
-  const paramsValue = ref({ ...props.params, pageNum: 1, pageSize: props.allOptions ? 1000 : 10 });
+  const paramsValue = ref({ ...props.params, page: 1, pageSize: props.allOptions ? 1000 : 10 });
 
   const getAttrs = computed(() => {
     return {

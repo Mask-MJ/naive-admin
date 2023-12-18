@@ -32,6 +32,7 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/cz-commitlint": "^18.4.3",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@iconify-json/ant-design": "^1.1.13",
     "@iconify-json/line-md": "^1.1.33",
     "@intlify/unplugin-vue-i18n": "^1.6.0",

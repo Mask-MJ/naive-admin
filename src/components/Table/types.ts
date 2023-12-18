@@ -1,13 +1,13 @@
 import type {
-  DataTableProps,
-  PaginationProps,
-  DataTableColumn,
   ButtonProps,
+  DataTableColumn,
+  DataTableProps,
+  DropdownOption,
+  PaginationProps,
   PopconfirmProps,
   TooltipProps,
-  DropdownOption,
 } from 'naive-ui';
-import type { RowKey, RowData } from 'naive-ui/es/data-table/src/interface';
+import type { RowData, RowKey } from 'naive-ui/es/data-table/src/interface';
 // import type { Size } from 'naive-ui/es/button/src/interface';
 import type { BasicFormProps } from '@/components/Form';
 

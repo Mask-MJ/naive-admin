@@ -1,7 +1,7 @@
 <script setup lang="ts" name="LayoutTab">
-  import { useRoute } from 'vue-router';
   import ReloadButton from './components/ReloadButton.vue';
   import TabDetail from './components/TabDetail.vue';
+  import { useRoute } from 'vue-router';
 
   const route = useRoute();
   const themeStore = useThemeStore();

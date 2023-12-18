@@ -1,9 +1,9 @@
-import type { GridProps, FormItemGiProps } from 'naive-ui';
-import type { LabelPlacement, LabelAlign } from 'naive-ui/es/form/src/interface';
-import type { FormSchema, PathMapToTime, FormAction } from './types';
-import { formProps } from 'naive-ui';
+import type { FormAction, FormSchema, PathMapToTime } from './types';
+import type { FormItemGiProps, GridProps } from 'naive-ui';
+import type { LabelAlign, LabelPlacement } from 'naive-ui/es/form/src/interface';
 
 import { PropType } from 'vue';
+import { formProps } from 'naive-ui';
 
 // 表单配置
 export const basicProps = {

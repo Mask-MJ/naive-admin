@@ -1,7 +1,8 @@
-import { flatMapDeep } from 'lodash-es';
 import type { VNodeChild } from 'vue';
-import type { RouteRecordRaw, RouteMeta } from 'vue-router/auto';
+import type { RouteMeta, RouteRecordRaw } from 'vue-router/auto';
+
 import { RouterLink } from 'vue-router/auto';
+import { flatMapDeep } from 'lodash-es';
 
 export interface Menu {
   key: string;

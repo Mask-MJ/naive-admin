@@ -1,7 +1,8 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
-  import { getColorPalette, mixinColor, getAppEnvConfig } from '@/utils';
   import loginForm from './loginForm.vue';
+  import { computed } from 'vue';
+
+  import { getAppEnvConfig, getColorPalette, mixinColor } from '@/utils';
 
   const theme = useThemeStore();
   const { VITE_GLOB_APP_TITLE } = getAppEnvConfig();

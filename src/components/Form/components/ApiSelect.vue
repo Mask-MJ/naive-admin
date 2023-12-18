@@ -26,7 +26,7 @@
     return { options: optionsRef.value, loading: loading.value, ...attrs };
   });
 
-  const paramsRef = ref<Recordable>({ pageNum: 1, pageSize: 10, [props.queryField]: '' });
+  const paramsRef = ref<Recordable>({ page: 1, pageSize: 10, [props.queryField]: '' });
 
   const fetch = async () => {
     const api = props.api;
@@ -63,15 +63,15 @@
   };
 
   const handleReset = () => {
-    paramsRef.value.pageNum = 1;
+    paramsRef.value.page = 1;
     optionsRef.value = [];
   };
 
   const handleScroll = (e: Event) => {
     const currentTarget = e.currentTarget as HTMLElement;
     if (currentTarget.scrollTop + currentTarget.offsetHeight >= currentTarget.scrollHeight) {
-      if (paramsRef.value.pageNum >= totalRef.value) return;
-      paramsRef.value.pageNum++;
+      if (paramsRef.value.page >= totalRef.value) return;
+      paramsRef.value.page++;
       fetch();
     }
   };

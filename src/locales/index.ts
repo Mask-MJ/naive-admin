@@ -1,6 +1,7 @@
 import type { App } from 'vue';
-import { createI18n } from 'vue-i18n';
+
 import messages from '@intlify/unplugin-vue-i18n/messages';
+import { createI18n } from 'vue-i18n';
 
 const locale = useStorage('LANGUAGE__', 'zh-CN');
 // const locale = localStorage.getItem('LANGUAGE__') || 'zh-CN';

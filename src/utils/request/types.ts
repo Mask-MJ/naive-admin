@@ -30,7 +30,7 @@ export interface ResultData<T = any> extends BasicResult {
 
 // 分页请求参数
 export interface ReqPage {
-  pageNum: number;
+  page: number;
   pageSize: number;
 }
 

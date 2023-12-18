@@ -52,6 +52,9 @@ devDependencies:
   '@commitlint/cz-commitlint':
     specifier: ^18.4.3
     version: 18.4.3(commitizen@4.3.0)(inquirer@8.2.5)(typescript@5.3.3)
+  '@ianvs/prettier-plugin-sort-imports':
+    specifier: ^4.1.1
+    version: 4.1.1(prettier@3.1.1)
   '@iconify-json/ant-design':
     specifier: ^1.1.13
     version: 1.1.13
@@ -945,6 +948,26 @@ packages:
   /@hutson/parse-repository-url@5.0.0:
     resolution: {integrity: sha512-e5+YUKENATs1JgYHMzTr2MW/NDcXGfYFAuOQU8gJgF/kEh4EqKgfGrfLI67bMD4tbhZVlkigz/9YYwWcbOFthg==}
     engines: {node: '>=10.13.0'}
+    dev: true
+
+  /@ianvs/prettier-plugin-sort-imports@4.1.1(prettier@3.1.1):
+    resolution: {integrity: sha512-kJhXq63ngpTQ2dxgf5GasbPJWsJA3LgoOdd7WGhpUSzLgLgI4IsIzYkbJf9kmpOHe7Vdm/o3PcRA3jmizXUuAQ==}
+    peerDependencies:
+      '@vue/compiler-sfc': '>=3.0.0'
+      prettier: 2 || 3
+    peerDependenciesMeta:
+      '@vue/compiler-sfc':
+        optional: true
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/generator': 7.23.6
+      '@babel/parser': 7.23.6
+      '@babel/traverse': 7.23.6
+      '@babel/types': 7.23.6
+      prettier: 3.1.1
+      semver: 7.5.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@iconify-json/ant-design@1.1.13:

@@ -1,36 +1,23 @@
+import type {
+  ChangeStatusParams,
+  LoginParams,
+  LoginResult,
+  RegisterParams,
+  ResetPasswordParams,
+  UserInfo,
+} from './user.type';
+
 import { defHttp } from '@/utils';
-
-export interface RegisterParams {
-  username: string;
-  password: string;
-  nickname?: string;
-  role?: string;
-}
-
-export interface LoginParams {
-  username: string;
-  password: string;
-}
-
-export interface LoginResult {
-  accessToken: string;
-  refreshToken: string;
-}
-
-export interface UserInfo {
-  id: number;
-  username: string;
-  role: string;
-  nickname?: string;
-  avatar?: string;
-}
 
 enum Api {
   Register = 'authentication/sign-up',
   Login = 'authentication/sign-in',
-  Logout = 'authentication/logout',
-  Users = 'users',
-  UserInfo = 'users/info',
+
+  Users = 'system/users',
+  UserInfo = 'system/users/info',
+  Logout = 'system/users/logout',
+  Status = 'system/users/status',
+  ResetPassword = 'system/users/password',
 }
 
 // 注册
@@ -47,9 +34,15 @@ export const getUsersList = () => defHttp.get<UserInfo[]>({ url: Api.Users });
 // 创建用户
 export const createUser = (params: RegisterParams) => defHttp.post({ url: Api.Users, params });
 // 获取单个用户信息
-export const getUser = (id: number) => defHttp.get<UserInfo>({ url: `${Api.Users}/${id}` });
+export const getUserDetail = (id: number) => defHttp.get<UserInfo>({ url: `${Api.Users}/${id}` });
 // 更新用户
 export const updateUser = (params: UserInfo) =>
   defHttp.patch({ url: `${Api.Users}/${params.id}`, params });
 // 删除用户
-export const delUsers = (ids: number | string) => defHttp.delete({ url: `${Api.Users}/${ids}` });
+export const deleteUser = (ids: number | string) => defHttp.delete({ url: `${Api.Users}/${ids}` });
+// 修改用户状态
+export const changeStatus = (params: ChangeStatusParams) =>
+  defHttp.put({ url: Api.Status, params });
+// 修改密码
+export const resetPassword = (params: ResetPasswordParams) =>
+  defHttp.put({ url: Api.ResetPassword, params });

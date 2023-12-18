@@ -1,8 +1,10 @@
 <script setup lang="ts" name="ThemeColorSelect">
   import { computed } from 'vue';
-  import { ColorCheckbox, ColorModal } from './components';
-  import { isInTraditionColors } from '@/settings';
+
   import useBoolean from '@/hooks/useBoolean';
+  import { isInTraditionColors } from '@/settings';
+
+  import { ColorCheckbox, ColorModal } from './components';
 
   const theme = useThemeStore();
 

@@ -1,13 +1,13 @@
+import type { ComponentMap } from './component';
 import type {
   ButtonProps,
+  FormInst,
   FormItemGiProps,
+  FormProps,
   GridItemProps,
   GridProps,
-  FormProps,
-  FormInst,
 } from 'naive-ui';
-import type { LabelPlacement, LabelAlign } from 'naive-ui/es/form/src/interface';
-import type { ComponentMap } from './component';
+import type { LabelAlign, LabelPlacement } from 'naive-ui/es/form/src/interface';
 
 export interface UploadFileParams {
   // Other parameters
